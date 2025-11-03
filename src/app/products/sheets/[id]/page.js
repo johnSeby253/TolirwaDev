@@ -1,0 +1,94 @@
+"use client";
+
+import { SHEETS_CONTENT_ID } from "@/lib/ApiPath";
+import client from "@/lib/apollo-client";
+import React, { useEffect, useState } from "react";
+
+
+export default function SheetDetail({ params }) {
+  const { id } = React.use(params);
+  const [sheetById, setSheetById] = useState(null);
+
+  useEffect(() => {
+    fetchSheetsById(id);
+  }, [id]);
+
+  const fetchSheetsById = async (sheetId) => {
+    try {
+      console.log("Fetching sheet:", sheetId);
+
+      const res = await client.query({
+        query: SHEETS_CONTENT_ID,
+        variables: { slug: sheetId },
+      });
+
+      const pageData = res.data.postBy;
+       const contentImages = extractContentImages(pageData.content);
+       console.log("PAG",contentImages);
+       
+
+    setSheetById({
+      ...pageData,
+      contentImages
+    });
+
+      console.log("✅ Final sheetById object:", {
+  ...pageData,
+  contentImages,
+});
+    } catch (err) {
+      console.log("Error fetching Sheet By Id Data:", err);
+    }
+  };
+
+
+  const extractContentImages = (html) => {
+  if (!html) return [];
+
+  const imgRegex = /<img[^>]+src="([^"]+)"/g;
+
+  const images = [];
+  let match;
+
+  while ((match = imgRegex.exec(html)) !== null) {
+    images.push(match[1]);
+  }
+
+  return images;
+};
+
+
+
+  if (!sheetById) {
+    return (
+      <div className="flex justify-center w-full mb-8">
+        <div className="w-full max-w-5xl px-5">
+          <h2 className="text-gray-600 text-xl font-bold mt-8">
+            Loading Sheet...
+          </h2>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex justify-center w-full mb-8">
+      <div className="w-full max-w-5xl px-5">
+        <h1 className="text-gray-600 text-3xl font-bold mt-8 mb-7">
+          {sheetById.title}
+        </h1>
+
+        <div className="w-full max-w-5xl">
+         {sheetById.contentImages?.map((img, index) => (
+    <img
+      key={index}
+      src={img}
+      alt={`${sheetById.title} ${index + 1}`}
+      className="w-full object-contain mb-4"
+    />
+  ))}
+        </div>
+      </div>
+    </div>
+  );
+}
