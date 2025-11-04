@@ -5,6 +5,7 @@ import SidebarProducts from '../../components/SidebarProducts'
 import { ABOUT_US_PAGE_CONTENT } from '@/lib/ApiPath';
 import client from '@/lib/apollo-client';
 import Loader from "@/components/Loader";
+import Link from 'next/link';
 
 
 
@@ -42,6 +43,17 @@ const About = () => {
   
   return (
     <div>
+      
+        <div className=' left-0 
+        2xl:absolute 2xl:top-[80%] 2xl:left-0'>
+          <Link href='/get-quotes'>
+            <img 
+              src="https://www.tolirwa.com/wp-content/uploads/2014/06/get-aquote.png"
+              alt="Get a quote"
+            />
+          </Link>
+        </div>
+
       <div className="about_cvr w-full h-auto p-5 bg-[#EEEE] 
       md:bg-white md:flex md:items-center md:justify-center
       ">
@@ -75,6 +87,9 @@ const About = () => {
         </div>
 
       </div>
+
+      
+    
     </div>
   )
 }

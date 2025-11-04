@@ -78,32 +78,37 @@ const SidebarProducts = () => {
       {/* Modal */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4"
+          className="fixed inset-0 bg-[#7777777d]  flex justify-center items-center z-50 p-4"
           onClick={closeModal}
         >
-          <div className="relative max-w-4xl w-full">
-            <img
-              src={products[currentIndex].imgFull}
-              alt={products[currentIndex].title}
-              className="w-full h-auto rounded-lg"
-            />
 
             <button
-              className="absolute top-2 right-2 text-white rounded-3xl bg-black text-2xl p-1 hover:text-gray-300"
+              className="absolute top-[5%] right-[10%] text-white rounded-3xl bg-black text-2xl border-2 border-white p-1 hover:text-gray-300 z-10"
               onClick={closeModal}
             >
               <i className="fas fa-times"></i>
             </button>
 
+          <div className="relative flex justify-center items-center w-[80%] h-[90%]  ">
             <button
-              className="absolute top-1/2 left-2 transform -translate-y-1/2 text-white rounded-3xl bg-black text-2xl p-1 hover:text-gray-300"
+              className="absolute left-[2%] transform -translate-y-1/2 text-white rounded-3xl bg-black text-sm  p-1 hover:text-gray-300"
               onClick={prevImage}
             >
               <i className="fas fa-chevron-left"></i>
             </button>
 
+            <img
+              src={products[currentIndex].imgFull}
+              alt={products[currentIndex].title}
+              className=" h-full border-8 border-white  w-full"
+            />
+
+          
+
+        
+
             <button
-              className="absolute top-1/2 right-2 transform -translate-y-1/2 text-white rounded-3xl bg-black text-2xl p-1 hover:text-gray-300"
+              className="absolute right-[2%] transform -translate-y-1/2 text-white rounded-3xl border-2 border-white bg-black text-sm p-1 hover:text-gray-300"
               onClick={nextImage}
             >
               <i className="fas fa-chevron-right"></i>

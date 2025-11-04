@@ -5,6 +5,7 @@ import SidebarProducts from '../../components/SidebarProducts'
 import client from '@/lib/apollo-client';
 import { CONTACT_US_CONTENT } from '@/lib/ApiPath';
 import Loader from "@/components/Loader";
+import Link from 'next/link';
 
 
 const Contact = () => {
@@ -167,6 +168,16 @@ if(loading) return <Loader />;
           </div>
         </div>
       </div>
+
+      <div className='absolute left-0 top-[80%]'>
+          <Link href='/get-quotes'>
+            <img 
+              src="https://www.tolirwa.com/wp-content/uploads/2014/06/get-aquote.png"
+              alt="Get a quote"
+            />
+          </Link>
+      </div>
+
     </div>
   )
 }

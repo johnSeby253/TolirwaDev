@@ -5,6 +5,7 @@ import SidebarProducts from '../../components/SidebarProducts'
 import client from '@/lib/apollo-client';
 import { GALLERY_PAGE_CONTENT } from '@/lib/ApiPath';
 import Loader from "@/components/Loader";
+import Link from 'next/link';
 
 
 const Gallery = () => {
@@ -97,6 +98,18 @@ const Gallery = () => {
   return (
     <div className='flex justify-center w-full mb-8'>
       <div className='w-full max-w-5xl px-5'>
+
+    <div className=' left-0 
+            2xl:absolute 2xl:top-[80%] 2xl:left-0'>
+              <Link href='/get-quotes'>
+                <img 
+                  src="https://www.tolirwa.com/wp-content/uploads/2014/06/get-aquote.png"
+                  alt="Get a quote"
+                />
+              </Link>
+            </div>
+
+
         <h1 className='text-gray-600 text-3xl font-bold mt-8 mb-7'>Gallery</h1>
 
         {/* Main Layout */}
@@ -114,13 +127,20 @@ const Gallery = () => {
               </div>
             ))}
           </div>
+        
 
           {/* Right Column: Sidebar */}
           <div className="w-full lg:w-1/3 mt-[-4%]">
             <SidebarProducts />
           </div>
         </div>
+
+
+        
+
       </div>
+
+     
 
       {/* Modal */}
       {isOpen && (

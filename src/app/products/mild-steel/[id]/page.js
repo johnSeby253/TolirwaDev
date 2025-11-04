@@ -2,6 +2,7 @@
 
 import { MILD_STEEL_SHEETS_CONTENT_BY_ID } from "@/lib/ApiPath";
 import client from "@/lib/apollo-client";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 
@@ -80,6 +81,20 @@ export default function SteelDetail({ params }) {
   return (
     <div className="flex justify-center w-full mb-8">
       <div className="w-full max-w-5xl px-5">
+
+
+            <div className=' left-0 
+            2xl:absolute 2xl:top-[80%] '>
+              <Link href='/get-quotes'>
+                <img 
+                  src="https://www.tolirwa.com/wp-content/uploads/2014/06/get-aquote.png"
+                  alt="Get a quote"
+                />
+              </Link>
+            </div>
+
+
+
         <h1 className="text-gray-600 text-3xl font-bold mt-8 mb-7">
           {steelById.title}
         </h1>
@@ -95,6 +110,8 @@ export default function SteelDetail({ params }) {
             ))}
         </div>
       </div>
+
+    
     </div>
   );
 }

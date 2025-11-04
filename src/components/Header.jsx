@@ -71,6 +71,30 @@ const Header = () => {
     }
   };
 
+
+
+const isMenuActive = (menu) => {
+  console.log("menu",menu);
+  
+  const cleanPath = pathname.replace(/\/$/, "");
+  const parentPath = (menu.path || "").replace(/\/$/, "");
+  console.log("cleanPath",cleanPath);
+  
+
+  //  If the current page is exactly the parent
+  if (cleanPath === parentPath){
+
+    console.log("cleanPath",cleanPath);
+   console.log("parentPath",parentPath);
+return true;
+  } 
+
+  // ✅ If the current page matches ANY submenu path
+  if (menu.children?.some((sub) => cleanPath === sub.fullPath)) return true;
+
+  return false;
+};
+
   useEffect(() => {
     fetchMenuData();
   }, []);
@@ -110,11 +134,7 @@ const Header = () => {
                 key={menu.id}
                 className={`relative group flex flex-col items-center px-5 py-3 text-[#4d4d4d]
                     hover:bg-[#ef3713] hover:text-white transition-all duration-300
-                    ${
-                      pathname.replace(/\/$/, "") === (menu.path || "").replace(/\/$/, "")
-                        ? "bg-[#ef3713] text-white"
-                        : ""
-                    }
+                    ${isMenuActive(menu) ? "bg-[#ef3713] text-white" : ""}
                 `}
               >
               

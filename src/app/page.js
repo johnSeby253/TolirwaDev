@@ -5,6 +5,7 @@ import client from "@/lib/apollo-client";
 import { HOME_PAGE_CONTENT } from '@/lib/ApiPath';
 import Loader from "@/components/Loader";
 import HomePagePopup from '@/components/HomePagePopup';
+import Link from 'next/link';
 
 const Home = () => {
 
@@ -95,6 +96,21 @@ const Home = () => {
 
 
       <div className="w-full flex items-center justify-center p-10 flex-col gap-16">
+
+
+      <div className='absolute left-0 top-[60%] 
+      lg:top-[65%]
+            xl:top-[70%]
+            2xl:absolute 2xl:top-[80%] '>
+              <Link href='/get-quotes'>
+                <img 
+                  src="https://www.tolirwa.com/wp-content/uploads/2014/06/get-aquote.png"
+                  alt="Get a quote"
+                />
+              </Link>
+            </div>
+
+
         <div className="homeContent w-[95%] flex flex-col h-auto 
         md:flex-row 
         xl:w-[55%]">
@@ -153,25 +169,25 @@ const Home = () => {
          md:w-[95%]
          xl:w-[55%] xl:p-5'>
 
-          <h2 className='text-[#6f6f6f] text-[15px] font-bold
+          <h2 className='text-[#6f6f6f] text-[15px] font-bold 
           sm:text-[22px]'>{structuredContent[15]?.text[0]?.text}</h2>
-          <span className='w-[50px] h-[50px] bg-[#EEE] rounded-full flex items-center justify-center
-          xl:w-[80px] xl:h-[80px]'><i className="fa-brands fa-facebook-f fa-xl" style={{color: "#929292"}}></i></span>
-          <span className='w-[50px] h-[50px] bg-[#EEE] rounded-full flex items-center justify-center
-           xl:w-[80px] xl:h-[80px]'><i className="fa-brands fa-linkedin-in fa-xl" style={{color: "#929292"}}></i></span>
+          <span className='w-[50px] h-[50px] bg-[#EEE] hover:bg-[#ef3713] text-[#929292] hover:text-white rounded-full flex items-center justify-center
+          xl:w-[80px] xl:h-[80px]'>
+            <Link href={`https://www.facebook.com/people/Tolirwa-Ltd/100054428262569/#`}>
+              <i className="fa-brands fa-facebook-f fa-xl"  ></i>
+            </Link>
+          </span>
+          <span className='w-[50px] h-[50px] bg-[#EEE] hover:bg-[#ef3713] text-[#929292] hover:text-white rounded-full flex items-center justify-center
+           xl:w-[80px] xl:h-[80px]'>
+          <Link href={`https://www.facebook.com/people/Tolirwa-Ltd/100054428262569/#`}>
+            <i className="fa-brands fa-linkedin-in fa-xl" ></i>
+          </Link>
+            </span>
      
 
         </div>
 
- {/* <div className='w-[95%] p-4 flex items-center justify-center gap-5 border-[1px] border-b-[#FFA290] border-t-[#888888] border-l-0 border-r-0'>
-
-          <h2 className='text-[#6f6f6f] text-[22px] font-bold'>{structuredContent[15]?.text[0]?.text}</h2>
-          <span className='w-[80px] h-[80px] bg-[#EEE] rounded-full flex items-center justify-center'><i className="fa-brands fa-facebook-f fa-2xl" style={{color: "#929292"}}></i></span>
-          <span className='w-[80px] h-[80px] bg-[#EEE] rounded-full flex items-center justify-center'><i className="fa-brands fa-linkedin-in fa-2xl" style={{color: "#929292"}}></i></span>
      
-
-        </div> */}
-
 
 
     </div>
